@@ -137,6 +137,15 @@ func NewRuleNode(record string, expr string) *RuleNode {
 	return &r
 }
 
+func NewAlertNode(alert string, expr string) *RuleNode {
+	r := RuleNode{
+		Alert:      yaml.Node{Value: alert},
+		Expr:        yaml.Node{Value: expr},
+	}
+
+	return &r
+}
+
 // Validate the rule and return a list of encountered errors.
 func (r *RuleNode) Validate() (nodes []WrappedError) {
 	if r.Record.Value != "" && r.Alert.Value != "" {
