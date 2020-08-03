@@ -135,7 +135,7 @@ func NewRuleNode(r Rule) *RuleNode {
 		Expr:       yaml.Node{Value: r.Expr},
 		For:        r.For,
 		Labels:     r.Labels,
-		Annotations r.Annotations
+		Annotations: r.Annotations,
 	}
 
 	return &n
