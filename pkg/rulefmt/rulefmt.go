@@ -128,22 +128,17 @@ type RuleNode struct {
 	Annotations map[string]string `yaml:"annotations,omitempty"`
 }
 
-func NewRuleNode(record string, expr string) *RuleNode {
-	r := RuleNode{
-		Record:      yaml.Node{Value: record},
-		Expr:        yaml.Node{Value: expr},
+func NewRuleNode(r Rule) *RuleNode {
+	n := RuleNode{
+		Record:     yaml.Node{Value: r.Record},
+		Alert:      yaml.Node{Value: r.Alert},
+		Expr:       yaml.Node{Value: r.Expr},
+		For:        r.For,
+		Labels:     r.Labels,
+		Annotations r.Annotations
 	}
 
-	return &r
-}
-
-func NewAlertNode(alert string, expr string) *RuleNode {
-	r := RuleNode{
-		Alert:      yaml.Node{Value: alert},
-		Expr:        yaml.Node{Value: expr},
-	}
-
-	return &r
+	return &n
 }
 
 // Validate the rule and return a list of encountered errors.
