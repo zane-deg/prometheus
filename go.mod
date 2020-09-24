@@ -1,4 +1,4 @@
-module github.com/prometheus/prometheus
+module github.com/zane-deg/prometheus
 
 go 1.13
 
